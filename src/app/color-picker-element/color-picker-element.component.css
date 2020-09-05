@@ -1,0 +1,16 @@
+:host {
+    outline: 2px solid black;
+    cursor: pointer;
+    background: white;
+    transition: all 200ms linear;
+}
+
+.color-picker {
+    width: 100%;
+    height: 100%;
+    
+}
+
+:host:hover {
+    transform: scale(1.2);
+}
