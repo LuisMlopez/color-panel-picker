@@ -1,1 +1,5 @@
-<div class="color-picker" (click)="onPickerClick()" #picker></div>
+<div 
+    class="color-picker" 
+    (click)="onPickerClick()" 
+    (contextmenu)="clearPicker($event)"
+    #picker></div>

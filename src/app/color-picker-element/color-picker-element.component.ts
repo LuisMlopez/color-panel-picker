@@ -18,4 +18,9 @@ export class ColorPickerElementComponent implements OnInit {
     this.onPickerClicked.emit(this.pickerDiv);
   }
 
+  clearPicker(event: MouseEvent) {
+    event.preventDefault();
+    this.pickerDiv.nativeElement.style.backgroundColor = '#ffff';
+  }
+
 }
