@@ -2,6 +2,6 @@
   <input type="color" [(ngModel)]="colorPicked" (input)="onColorPickerInputChange()">
 
   <div class="container">
-    <app-color-picker-element *ngFor="let colorPicker of elementsArray"></app-color-picker-element>
+    <app-color-picker-element *ngFor="let colorPicker of elementsArray" (onPickerClicked)="onPickerClicked($event)"></app-color-picker-element>
   </div>
 </div>

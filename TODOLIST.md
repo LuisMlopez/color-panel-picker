@@ -1,0 +1,1 @@
+[ ] Fix mnargins in full screen
