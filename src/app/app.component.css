@@ -23,3 +23,18 @@ input {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.color-history {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.color-history-element {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 3px;
+    align-self: center;
+    margin: 5px;
+    cursor: pointer;
+}

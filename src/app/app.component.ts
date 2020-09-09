@@ -1,4 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
+import { Color } from './Color';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,28 @@ import { Component, ElementRef } from '@angular/core';
 })
 export class AppComponent {
   elementsNumber = 5 * 8;
-  elementsArray = Array.from({ length: this.elementsNumber });
+  elementsArray = Array.from({ length: this.elementsNumber }, () => {return {color: '#fff', active: false}});
+  colorHistory: string[] = [];
 
   colorPicked = '#15e56f';
 
-  onColorPickerInputChange() {
-    console.log(this.colorPicked)
+  onPickerClicked(colorElement: Color) {
+    colorElement.color = this.colorPicked;
+    this.updateColorHistory();
   }
 
-  onPickerClicked(pickerReference: ElementRef) {
-    pickerReference.nativeElement.style.backgroundColor = this.colorPicked;
+  onPickerClear(colorElement: Color) {
+    colorElement.color = '#fff';
+    this.updateColorHistory();
+  }
+
+  updateColorHistory() {
+    this.colorHistory = this.elementsArray.map(
+      colorElement => colorElement.color
+    ).filter(
+      (color, pos, self) => {
+        return self.indexOf(color) === pos && color !== '#fff'
+      }
+    );
   }
 }

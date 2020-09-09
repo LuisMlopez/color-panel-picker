@@ -1,7 +1,22 @@
 <div class="app">
-  <input type="color" [(ngModel)]="colorPicked" (input)="onColorPickerInputChange()">
+  <input type="color" [(ngModel)]="colorPicked">
+
+  <div class="color-history">
+    <div 
+      class="color-history-element"
+      *ngFor="let color of colorHistory" 
+      [ngStyle]="{backgroundColor: color}"
+      (click)="colorPicked = color"
+    ></div>
+  </div>
 
   <div class="container">
-    <app-color-picker-element *ngFor="let colorPicker of elementsArray" (onPickerClicked)="onPickerClicked($event)"></app-color-picker-element>
+    <app-color-picker-element 
+      *ngFor="let colorPicker of elementsArray" 
+      [colorElement]="colorPicker"
+      (onElementClicked)="onPickerClicked($event)"
+      (onElementClear)="onPickerClear($event)"
+    >
+    </app-color-picker-element>
   </div>
 </div>

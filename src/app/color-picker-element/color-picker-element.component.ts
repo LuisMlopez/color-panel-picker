@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, Input } from '@angular/core';
+import { Color } from '../Color';
 
 @Component({
   selector: 'app-color-picker-element',
@@ -6,21 +7,23 @@ import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '
   styleUrls: ['./color-picker-element.component.css']
 })
 export class ColorPickerElementComponent implements OnInit {
-  @ViewChild('picker') pickerDiv: ElementRef;
-  @Output() onPickerClicked =  new EventEmitter<ElementRef>();
+  @Output() onElementClicked =  new EventEmitter<Color>();
+  @Output() onElementClear = new EventEmitter<Color>();
+
+  @Input() colorElement: Color;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onPickerClick() {
-    this.onPickerClicked.emit(this.pickerDiv);
+  pickerClick() {
+    this.onElementClicked.emit(this.colorElement);
   }
 
   clearPicker(event: MouseEvent) {
     event.preventDefault();
-    this.pickerDiv.nativeElement.style.backgroundColor = '#ffff';
+    this.onElementClear.emit(this.colorElement);
   }
 
 }

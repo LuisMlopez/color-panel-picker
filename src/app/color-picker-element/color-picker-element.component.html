@@ -1,5 +1,6 @@
 <div 
     class="color-picker" 
-    (click)="onPickerClick()" 
+    (click)="pickerClick()" 
     (contextmenu)="clearPicker($event)"
-    #picker></div>
+    [ngStyle]="{backgroundColor: colorElement.color}"
+></div>
